@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-dmsans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Dimension (dimension.dev) adapted — achromatic dusk workspace */
+  --color-background: #0a0a0a;          /* Void Canvas */
+  --color-surface: #0a0a0a;
+  --color-card: #161616;                /* Graphite — elevated panels */
+  --color-frosted: rgba(212, 212, 212, 0.10); /* Frosted Glass */
+  --color-border: rgba(229, 229, 229, 0.16);  /* Hairline (extracted #e5e5e5 loses alpha; 16% keeps the "light edge" intent) */
+  --color-border-strong: rgba(229, 229, 229, 0.32);
+  --color-rule: rgba(229, 229, 229, 0.10);
+  --color-foreground: #ededed;          /* Bone */
+  --color-secondary: #c2c2c2;           /* Ash */
+  --color-muted-foreground: #8a8a8a;    /* lifted Slate — keeps 4.5:1 on void canvas */
+  --color-steel: #8a8a8a;
+  --color-smoke: #b2b2b2;
+  --color-primary: #ffffff;             /* Snow White — the inverted CTA */
+  --color-primary-hover: #ededed;
+  --color-primary-foreground: #161616;
+  --color-accent: #6b62f2;              /* Dusk Violet — gradient wash only, never solid */
+  --color-success: #5fae72;
+  --color-warning: #d19a3a;
+  --color-danger: #d1553b;
+
+  /* Dimension geometry: pills for controls, 24px cards, 10px ui */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --radius-2xl: 40px;
+  --radius-3xl: 42px;
+}
+
+/* frosted glass panel — translucency + hairline, no shadow */
+.frosted {
+  background: var(--color-frosted);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Dimension signature hero — warm-to-cool gradient (amber → cobalt), full-bleed */
+.dusk-hero {
+  background:
+    radial-gradient(70% 90% at 55% 30%, rgba(107, 98, 242, 0.30), transparent 70%),
+    linear-gradient(172deg, #4672c8 0%, #7b90bd 42%, #b7a295 76%, #d6ad8b 100%);
+}
+
+.manual-expand { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.24s ease; }
+.manual-expand[data-open] { grid-template-rows: 1fr; opacity: 1; }
+.manual-expand .manual-inner { overflow: hidden; min-height: 0; }
+.manual-expand .manual-body { transform: translateY(-6px); transition: transform 0.32s cubic-bezier(0.4,0,0.2,1); }
+.manual-expand[data-open] .manual-body { transform: none; }
+@media (prefers-reduced-motion: reduce) { .manual-expand, .manual-expand .manual-body { transition: none; } }
+* { scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border-strong); border: 3px solid var(--color-background); border-radius: 9999px; }
