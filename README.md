@@ -5,7 +5,7 @@
 
 [**▶ Live demo**](https://agentid.druxamb.dev/) ·
 [Contract](https://scan.botchain.ai/address/0xB9826C48e938a78B5E927bb98e827A7d5e2767C6)
-· BOT Chain mainnet (chain 677)
+· [X/Twitter](https://x.com/agentidlive) · BOT Chain mainnet (chain 677)
 
 ![AgentID — the agent registry that never sleeps](docs/hero.png)
 
