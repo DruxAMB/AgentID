@@ -361,6 +361,14 @@ export default function Home() {
             >
               BOT Chain Explorer ↗
             </a>
+            <a
+              href={`${NET.explorer}/address/${CONTRACT_ADDRESS}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-muted-foreground underline decoration-dotted underline-offset-2 hover:text-foreground"
+            >
+              {CONTRACT_ADDRESS.slice(0, 10)}…{CONTRACT_ADDRESS.slice(-6)}
+            </a>
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
             AgentID is built on BOT Chain mainnet (chain 677).
