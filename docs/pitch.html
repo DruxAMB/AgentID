@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AgentID — Project Pitch</title>
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { font-family: "DM Sans", "Segoe UI", system-ui, sans-serif; color: #161616; background: #fff; }
+  .page { width: 1100px; margin: 0 auto; padding: 64px 72px; }
+  .hero { background: linear-gradient(155deg, #4672c8 0%, #7b90bd 45%, #c4a68e 100%); color: #fff; border-radius: 24px; padding: 56px 56px 48px; }
+  .eyebrow { font-size: 14px; opacity: .85; letter-spacing: .02em; }
+  h1 { font-size: 46px; font-weight: 500; letter-spacing: -0.02em; margin-top: 10px; line-height: 1.08; }
+  .tag { margin-top: 14px; font-size: 17px; max-width: 640px; opacity: .92; }
+  .links { margin-top: 22px; font-size: 13px; opacity: .95; }
+  .links span { display: inline-block; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 5px 13px; margin-right: 8px; }
+  h2 { font-size: 22px; font-weight: 500; margin: 44px 0 12px; letter-spacing: -0.01em; }
+  p, li { font-size: 14.5px; line-height: 1.55; color: #333; }
+  .cols { display: flex; gap: 28px; }
+  .col { flex: 1; }
+  ul { padding-left: 18px; }
+  li { margin-bottom: 6px; }
+  .card { background: #f6f6f7; border: 1px solid #e5e5e5; border-radius: 16px; padding: 22px 24px; margin-top: 14px; }
+  .card b { font-weight: 500; }
+  table { border-collapse: collapse; width: 100%; margin-top: 10px; font-size: 13.5px; }
+  th { text-align: left; font-weight: 500; color: #666; padding: 8px 10px; border-bottom: 1px solid #ddd; }
+  td { padding: 8px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .mono { font-family: "JetBrains Mono", Consolas, monospace; font-size: 12.5px; }
+  .flow { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 13px; }
+  .flow .box { background: #161616; color: #ededed; border-radius: 12px; padding: 12px 16px; }
+  .flow .arr { color: #888; }
+  .addr { background: #f0f0f1; border-radius: 8px; padding: 2px 7px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="eyebrow">BOT Chain · chainId 677 · live on mainnet</div>
+    <h1>AgentID — the agent registry<br>that never sleeps.</h1>
+    <p class="tag">An on-chain identity layer for AI agents: any wallet registers an agent
+      with a name, category and description — permanent, owner-editable, and queryable
+      by every app on BOT Chain.</p>
+    <div class="links">
+      <span>agentid.druxamb.dev</span>
+      <span>github.com/DruxAMB/AgentID</span>
+      <span>scan.botchain.ai</span>
+    </div>
+  </div>
+
+  <h2>The problem</h2>
+  <p>AI agents have no portable identity. An agent's name, specialty and owner exist only
+     inside whichever app happens to run it — there is no shared, credibly-neutral place to
+     ask <i>who runs this agent and what does it do</i> that outlives any single frontend or company.</p>
+
+  <h2>What AgentID is</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="card"><b>On-chain registry.</b> Agents are stored in contract storage on
+        BOT Chain mainnet — name, category (writing, design, research, support, coding, data, other),
+        description, owner, timestamps. No server, no database, no company to go offline.</div>
+      <div class="card"><b>Public directory.</b> The dApp lists every registered agent with
+        category filters and text search — read directly from chain, no wallet required to browse.</div>
+    </div>
+    <div class="col">
+      <div class="card"><b>Owner-governed.</b> The registering wallet can update its agent's
+        description via <span class="mono">updateDescription</span>; nobody else can touch the row.
+        Identity is self-sovereign by construction.</div>
+      <div class="card"><b>Permanently addressed.</b> UUPS + ERC1967 proxy: the contract can be
+        upgraded (features, fixes) while the address — the thing integrators reference — never changes.</div>
+    </div>
+  </div>
+
+  <h2>Architecture</h2>
+  <div class="flow">
+    <span class="box">User wallet</span><span class="arr">→</span>
+    <span class="box">AgentID dApp (Next.js + ethers)</span><span class="arr">→</span>
+    <span class="box">ERC1967 Proxy<br><span class="mono">0xB9826C48e938a78B5E927bb98e827A7d5e2767C6</span></span><span class="arr">→</span>
+    <span class="box">Implementation<br><span class="mono">0x903eE4034f5a0c142f7A9468897fbc5464cd983c</span></span>
+  </div>
+  <p style="margin-top:10px">Registration and edits are signed transactions (<span class="mono">register</span>,
+    <span class="mono">updateDescription</span>); directory reads are free calls
+    (<span class="mono">agentsPage</span>, <span class="mono">agentCount</span>). Upgrade authority sits
+    with the project owner wallet only.</p>
+
+  <h2>Status &amp; traction</h2>
+  <table>
+    <tr><th>Item</th><th>State</th></tr>
+    <tr><td>Contract</td><td>Deployed on BOT Chain mainnet — proxy <span class="mono addr">0xB982…76C6</span>, verified on scan.botchain.ai</td></tr>
+    <tr><td>Frontend</td><td>Live — agentid.druxamb.dev (register, filter, search, owner edit)</td></tr>
+    <tr><td>Code</td><td>Open source — github.com/DruxAMB/AgentID (MIT)</td></tr>
+    <tr><td>Stage</td><td>Mainnet live; registry open for first registrants</td></tr>
+  </table>
+
+  <h2>Why it fits BOT Chain</h2>
+  <ul>
+    <li><b>Native utility, not a wrapper</b> — BOT Chain's AI/DePIN positioning needs agent infrastructure;
+        identity is the registry everything else (marketplaces, oracle consumers, reputation) builds on.</li>
+    <li><b>Real transaction surface</b> — every registration and edit is a user-paid mainnet transaction
+        with a durable on-chain artifact.</li>
+    <li><b>Composable</b> — any contract can read the directory on-chain; other projects in the same
+        ecosystem (proofs, tipping, badges) can resolve agent identity without permission.</li>
+  </ul>
+
+  <h2>Roadmap</h2>
+  <ul>
+    <li>Rich agent metadata (avatar, endpoints, model/provider fields) via a linked metadata standard.</li>
+    <li>Paged directory UI beyond the current 200-entry view, plus per-agent detail routes.</li>
+    <li>Registry ↔ oracle integration: on-chain inference attribution for registered agents.</li>
+    <li>Reputation hooks — tipping and badge issuance keyed to agent IDs.</li>
+  </ul>
+
+  <p style="margin-top:40px;font-size:12px;color:#888">AgentID · BOT Chain Ecosystem Support Program application · 2026</p>
+</div>
+</body>
+</html>
