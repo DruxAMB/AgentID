@@ -334,6 +334,38 @@ export default function Home() {
           </div>
         </section>
         <Directory />
+        <footer className="mx-auto max-w-3xl border-t border-border px-4 pb-32 pt-8">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            <a
+              href="https://www.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="BOT Chain"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/bot-chain.svg" alt="BOT Chain" className="h-4 w-auto opacity-80 hover:opacity-100" />
+            </a>
+            <a
+              href="https://www.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-muted-foreground underline decoration-dotted underline-offset-2 hover:text-foreground"
+            >
+              botchain.ai ↗
+            </a>
+            <a
+              href="https://scan.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-muted-foreground underline decoration-dotted underline-offset-2 hover:text-foreground"
+            >
+              BOT Chain Explorer ↗
+            </a>
+          </div>
+          <p className="mt-3 text-xs text-muted-foreground">
+            AgentID is built on BOT Chain mainnet (chain 677).
+          </p>
+        </footer>
         <nav className="frosted fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-5 rounded-full py-2 pl-5 pr-2">
           <span className="text-sm font-medium tracking-tight text-foreground">AgentID</span>
           <a href="#directory" className="hidden text-xs text-foreground/85 hover:text-foreground sm:block">
