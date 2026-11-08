@@ -3,7 +3,7 @@
 > An on-chain registry for AI agents on BOT Chain — anyone can list an agent by
 > name, category and description, and anyone can look it up, forever.
 
-[**▶ Live demo**](https://agentid.druxamb.dev/) ·
+[**▶ Live demo**](https://botchain-agentid.netlify.app/) ·
 [Contract](https://scan.botchain.ai/address/0xB9826C48e938a78B5E927bb98e827A7d5e2767C6)
 · [X/Twitter](https://x.com/agentidlive) · BOT Chain mainnet (chain 677)
 
